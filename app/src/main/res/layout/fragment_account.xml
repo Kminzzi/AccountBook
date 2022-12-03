@@ -22,4 +22,18 @@
         android:inputType="textMultiLine"
         android:textSize="18sp" />
 
+    <EditText
+        android:id="@+id/edtSuResult"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+
+    <EditText
+        android:id="@+id/edtJiResult"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+
+
+
 </LinearLayout>
