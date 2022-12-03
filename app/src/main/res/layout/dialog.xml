@@ -13,6 +13,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="수입액"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/edtSuBun"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="분류"
         android:inputType="textPersonName" />
 
     <TextView
@@ -25,5 +34,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="지출액"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/edtJiBun"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="분류"
         android:inputType="textPersonName" />
 </LinearLayout>

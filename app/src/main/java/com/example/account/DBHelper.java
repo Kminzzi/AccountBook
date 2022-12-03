@@ -11,9 +11,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "CREATE TABLE if not exists test ("
+        String sql = "CREATE TABLE if not exists mytable ("
                 + "_id integer primary key autoincrement,"
-                + "txt text);";
+                + "income integer ,"
+                + "income_class text, "
+                + "expenditure integer, "
+                + "expenditure_class text);";
 
         db.execSQL(sql);
     }

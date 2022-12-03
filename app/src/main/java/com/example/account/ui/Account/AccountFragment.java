@@ -1,12 +1,12 @@
 package com.example.account.ui.Account;
 
-import android.Manifest;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,14 +20,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.account.MainActivity;
+import com.example.account.AddActivity;
+import com.example.account.DBHelper;
 import com.example.account.R;
 import com.example.account.databinding.FragmentAccountBinding;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
 
 
 public class AccountFragment extends Fragment {
@@ -48,8 +44,8 @@ public class AccountFragment extends Fragment {
     static int balance = 0;
 
     myDBHelper myDBHelper;
-    EditText edtName, edtNumber, edtNameResultm, edtNumberResult;
-    Button btnInit, btnInsert, btnSelect;
+    EditText edtName, edtNumber, edtSuResultm, edtJiResult;
+    Button btnInit, btnInsert, btnSelect, button;
     SQLiteDatabase sqlDB;
 
 
@@ -64,23 +60,25 @@ public class AccountFragment extends Fragment {
         calView = root.findViewById(R.id.calendarView);
         tv = root.findViewById(R.id.textView);
 
-        edtName = (EditText) root.findViewById(R.id.edtName);
-        edtNumber = (EditText) root.findViewById(R.id.edtNumber);
-        edtNameResultm = (EditText) root.findViewById(R.id.edtNameResult);
-        edtNumberResult = (EditText) root.findViewById(R.id.edtNumberResult);
-        btnInit = (Button) root.findViewById(R.id.btnInit);
-        btnInsert = (Button) root.findViewById(R.id.btnInsert);
-        btnSelect = (Button) root.findViewById(R.id.btnSelect);
+        edtSuResultm = (EditText) root.findViewById(R.id.edtSuResult);
+        edtJiResult = (EditText) root.findViewById(R.id.edtJiResult);
+        button = (Button) root.findViewById(R.id.button);
 
-        myDBHelper = new myDBHelper(getActivity());
-//        btnInit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                sqlDB = myDBHelper.getWritableDatabase();
-//                myDBHelper.onUpgrade(sqlDB,1,2);
-//                sqlDB.close();
-//            }
-//        });
+        DBHelper helper;
+        SQLiteDatabase db;
+        helper = new DBHelper(getActivity(), "user.db", null, 1);
+        db = helper.getWritableDatabase();
+        helper.onCreate(db);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), AddActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+            }
+        });
+
 
 
         calView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -99,6 +97,9 @@ public class AccountFragment extends Fragment {
                 dialogView = getLayoutInflater().inflate(R.layout.dialog, null);
                 editText = dialogView.findViewById(R.id.editText);
                 editText2 = dialogView.findViewById(R.id.editText2);
+                edtSuResultm = dialogView.findViewById(R.id.edtSuBun);
+                edtJiResult = dialogView.findViewById(R.id.edtJiBun);
+
                 AlertDialog.Builder dlg = new AlertDialog.Builder(getActivity());
                 dlg.setTitle("가계부 쓰기");
                 dlg.setView(dialogView);
@@ -109,13 +110,28 @@ public class AccountFragment extends Fragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         int etIncome = Integer.parseInt(editText.getText().toString());
                         int etExpense = Integer.parseInt(editText2.getText().toString());
+                        String etSuBun = new String(edtSuResultm.getText().toString());
+                        String etJiBun = new String(edtJiResult.getText().toString());
+
+                        ContentValues values = new ContentValues();
+                        values.put("int","etIncome");
+                        db.insert("mytable",null,values);
+
                         income = income + etIncome;
                         expense = expense + etExpense;
                         balance = income - expense;
 
-                        String str = "수입 합계 : " + income + "\n"
-                                + "지출 합계 : " + expense + "\n"
-                                + "잔액 : " + balance;
+
+//                        String str = "수입 합계 : " + income + "\n"
+//                                + "지출 합계 : " + expense + "\n"
+//                                + "잔액 : " + balance + "\n"
+//                                + "분류 : " + etSuBun + "\n"
+//                                + "분류 : " + etJiBun;
+
+                        String str = "수입액 : " + etIncome + "\n"
+                                + "분류 : " + etSuBun + "\n"
+                                + "지출액 : " + etExpense + "\n"
+                                + "분류 : " + etJiBun;
 
                         String writeStr = "수입 : " + etIncome + "\n" + "지출 : " + etExpense;
                         tv.setText(str);
