@@ -44,7 +44,7 @@ public class AccountFragment extends Fragment {
     static int expense = 0;
     static int balance = 0;
 
-    EditText edtResult;
+    EditText edtDate, edtCard, edtClass, edtAmount, edtContent;
     Button btnInit, btnInsert, btnSelect, button;
 
 
@@ -63,7 +63,7 @@ public class AccountFragment extends Fragment {
         calView = root.findViewById(R.id.calendarView);
         tv = root.findViewById(R.id.textView);
 
-        edtResult = (EditText) root.findViewById(R.id.edtResult);
+//        edtResult = (EditText) root.findViewById(R.id.edtResult);
         button = (Button) root.findViewById(R.id.button);
 
 
@@ -88,18 +88,32 @@ public class AccountFragment extends Fragment {
                         + Integer.toString(selectMonth) + "월"
                         + Integer.toString(selectDay) + "일";
 
+
+                database = new MyDatabaseHelper(getActivity());
                 sql = database.getReadableDatabase();
                 Cursor cursor;
                 cursor = sql.rawQuery("SELECT * FROM account_user;", null);
 
-                String strNames = "그룹 이름" + "\r\n" + "-------" + "\r\n";
-                String strNumbers = "인원" + "\r\n" + "-------" + "\r\n";
+                String strDate = "날짜" + "\r\r\n" + "-------" + "\r\r\n";
+                String strCard = "자산" + "\r\r\n" + "-------" + "\r\r\n";
+                String strClass = "분류" + "\r\r\n" + "-------" + "\r\r\n";
+                String strAmount = "금액" + "\r\r\n" + "-------" + "\r\r\n";
+                String strContent = "내용" + "\r\r\n" + "-------" + "\r\r\n";
 
                 while (cursor.moveToNext()) {
-                    strNames += cursor.getString(0) + "\r\n";
-                    strNumbers += cursor.getString(1) + "\r\n";
+                    strDate += cursor.getString(0) + "\r\n";
+                    strCard += cursor.getString(1) + "\r\n";
+                    strClass += cursor.getString(2) + "\r\n";
+                    strAmount += cursor.getString(3) + "\r\n";
+                    strContent += cursor.getString(4) + "\r\n";
                 }
-                edtResult.setText(strNames);
+
+                edtDate.setText(strDate);
+                edtCard.setText(strCard);
+                edtClass.setText(strClass);
+                edtDate.setText(strAmount);
+                edtContent.setText(strContent);
+
                 cursor.close();
                 sql.close();
 
