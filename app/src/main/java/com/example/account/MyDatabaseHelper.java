@@ -8,6 +8,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import java.util.Date;
+
 public class MyDatabaseHelper extends SQLiteOpenHelper
 {
     private Context context;
@@ -39,18 +41,16 @@ public class MyDatabaseHelper extends SQLiteOpenHelper
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
-    {
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
 
-    void addBook(String date, String card, String classfication, String amount, String content)
-    {
+    void addBook(Date date, String card, String classfication, int amount, String content) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
-        cv.put(COLUMN_DATE, date);
+        cv.put(COLUMN_DATE, String.valueOf(date));
         cv.put(COLUMN_CARD, card);
         cv.put(COLUMN_CLASS, classfication);
         cv.put(COLUMN_AMOUNT, amount);

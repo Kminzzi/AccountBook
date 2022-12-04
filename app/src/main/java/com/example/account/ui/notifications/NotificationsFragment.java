@@ -11,7 +11,7 @@ public class NotificationsFragment extends PreferenceFragmentCompat {
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        setPreferencesFromResource(R.xml.root_preferences, rootKey);
+//        setPreferencesFromResource(R.xml.root_preferences, rootKey);
         EditTextPreference signaturePreference = findPreference("signature");
     }
 }

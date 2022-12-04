@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.account.AddActivity;
+import com.example.account.MyDatabaseHelper;
 import com.example.account.R;
 import com.example.account.databinding.FragmentAccountBinding;
 
@@ -42,10 +44,12 @@ public class AccountFragment extends Fragment {
     static int expense = 0;
     static int balance = 0;
 
-//    myDBHelper myDBHelper;
-    EditText edtName, edtNumber, edtSuResultm, edtJiResult;
+    EditText edtResult;
     Button btnInit, btnInsert, btnSelect, button;
-    SQLiteDatabase sqlDB;
+
+
+    MyDatabaseHelper database;
+    SQLiteDatabase sql;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -59,8 +63,7 @@ public class AccountFragment extends Fragment {
         calView = root.findViewById(R.id.calendarView);
         tv = root.findViewById(R.id.textView);
 
-        edtSuResultm = (EditText) root.findViewById(R.id.edtSuResult);
-        edtJiResult = (EditText) root.findViewById(R.id.edtJiResult);
+        edtResult = (EditText) root.findViewById(R.id.edtResult);
         button = (Button) root.findViewById(R.id.button);
 
 
@@ -70,6 +73,36 @@ public class AccountFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), AddActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
+            }
+        });
+
+        calView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int datOfMonth) {
+                selectYear = year;
+                selectMonth = month + 1;    //시스템 상에서는 month가 1 작게 나오기 때문
+                selectDay = datOfMonth;
+
+
+                filename = Integer.toString(selectYear) + "년"
+                        + Integer.toString(selectMonth) + "월"
+                        + Integer.toString(selectDay) + "일";
+
+                sql = database.getReadableDatabase();
+                Cursor cursor;
+                cursor = sql.rawQuery("SELECT * FROM account_user;", null);
+
+                String strNames = "그룹 이름" + "\r\n" + "-------" + "\r\n";
+                String strNumbers = "인원" + "\r\n" + "-------" + "\r\n";
+
+                while (cursor.moveToNext()) {
+                    strNames += cursor.getString(0) + "\r\n";
+                    strNumbers += cursor.getString(1) + "\r\n";
+                }
+                edtResult.setText(strNames);
+                cursor.close();
+                sql.close();
+
             }
         });
 
@@ -138,21 +171,4 @@ public class AccountFragment extends Fragment {
         return root;
     }
 
-//    public class myDBHelper extends SQLiteOpenHelper {
-//        public myDBHelper(Context context) {
-//            super(context, "groupDB", null, 1);
-//        }
-//
-//        @Override
-//        public void onCreate(SQLiteDatabase db) {
-//            db.execSQL("CREATE TABLE groupTBL ( gName CHAR(20) PRIMARY KEY,gNumber INTEGER);");
-//        }
-//
-//        @Override
-//        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-//            db.execSQL("DROP TABLE IF EXISTS groupTBL");
-//            onCreate(db);
-//
-//        }
-//    }
 }
