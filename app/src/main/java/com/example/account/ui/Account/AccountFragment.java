@@ -66,6 +66,12 @@ public class AccountFragment extends Fragment {
 //        edtResult = (EditText) root.findViewById(R.id.edtResult);
         button = (Button) root.findViewById(R.id.button);
 
+        edtDate = root.findViewById(R.id.edtDate);
+        edtCard = root.findViewById(R.id.edtCard);
+        edtClass = root.findViewById(R.id.edtClass);
+        edtAmount = root.findViewById(R.id.edtAmount);
+        edtContent = root.findViewById(R.id.edtContent);
+
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,24 +100,24 @@ public class AccountFragment extends Fragment {
                 Cursor cursor;
                 cursor = sql.rawQuery("SELECT * FROM account_user;", null);
 
-                String strDate = "날짜" + "\r\r\n" + "-------" + "\r\r\n";
+//                String strDate = "날짜" + "\r\r\n" + "-------" + "\r\r\n";
                 String strCard = "자산" + "\r\r\n" + "-------" + "\r\r\n";
                 String strClass = "분류" + "\r\r\n" + "-------" + "\r\r\n";
                 String strAmount = "금액" + "\r\r\n" + "-------" + "\r\r\n";
                 String strContent = "내용" + "\r\r\n" + "-------" + "\r\r\n";
 
                 while (cursor.moveToNext()) {
-                    strDate += cursor.getString(0) + "\r\n";
-                    strCard += cursor.getString(1) + "\r\n";
-                    strClass += cursor.getString(2) + "\r\n";
-                    strAmount += cursor.getString(3) + "\r\n";
-                    strContent += cursor.getString(4) + "\r\n";
+//                    strDate += cursor.getString(1) + "\r\n";
+                    strCard += cursor.getString(2) + "\r\n";
+                    strClass += cursor.getString(3) + "\r\n";
+                    strAmount += cursor.getString(4) + "\r\n";
+                    strContent += cursor.getString(5) + "\r\n";
                 }
 
-                edtDate.setText(strDate);
+//                edtDate.setText(strDate);
                 edtCard.setText(strCard);
                 edtClass.setText(strClass);
-                edtDate.setText(strAmount);
+                edtAmount.setText(strAmount);
                 edtContent.setText(strContent);
 
                 cursor.close();

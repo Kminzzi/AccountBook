@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Class">
+        <item>식비</item>
+        <item>교통/차량</item>
+        <item>문화생활</item>
+        <item>마트/편의점</item>
+        <item>패션/미용</item>
+        <item>생활용품</item>
+        <item>주거/통신</item>
+        <item>건강</item>
+        <item>교육</item>
+        <item>경조사/회비</item>
+        <item>부모님</item>
+        <item>기타</item>
+    </string-array>
+
+</resources>

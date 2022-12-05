@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:text="날짜"
             android:textSize="15sp" />
 
@@ -24,7 +24,7 @@
             android:id="@+id/edtDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:textSize="15sp"/>
     </LinearLayout>
 
@@ -38,15 +38,15 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:text="자산"
             android:textSize="15sp" />
 
-        <EditText
+        <Spinner
             android:id="@+id/edtCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:textSize="15sp" />
     </LinearLayout>
 
@@ -59,17 +59,17 @@
             android:id="@+id/classfication"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:layout_marginStart="46dp"
             android:layout_marginTop="216dp"
             android:text="분류"
             android:textSize="15sp" />
 
-        <EditText
+        <Spinner
             android:id="@+id/edtClass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:textSize="15sp"/>
     </LinearLayout>
 
@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:text="금액"
             android:textSize="15sp" />
 
@@ -91,7 +91,7 @@
             android:id="@+id/edtAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:textSize="15sp" />
     </LinearLayout>
 
@@ -105,7 +105,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:text="내용"
             android:textSize="15sp" />
 
@@ -113,7 +113,7 @@
             android:id="@+id/edtContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:textSize="15sp"/>
     </LinearLayout>
 

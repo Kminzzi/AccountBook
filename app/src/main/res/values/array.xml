@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Card">
+        <item>현금</item>
+        <item>국민은행</item>
+        <item>신한은행</item>
+        <item>광주은행</item>
+        <item>카카오뱅크</item>
+        <item>농협</item>
+        <item>신협</item>
+        <item>수협</item>
+    </string-array>
+
+</resources>
