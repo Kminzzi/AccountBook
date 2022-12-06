@@ -18,7 +18,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="수입지출합계"
+        android:hint="수입"
         android:inputType="textMultiLine"
         android:textSize="18sp" />
 
@@ -127,6 +127,14 @@
             android:textAlignment="center"
             android:textSize="15sp" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/ji"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="지출"
+        android:inputType="textMultiLine"
+        android:textSize="18sp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button"
