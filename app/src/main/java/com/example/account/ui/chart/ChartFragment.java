@@ -5,18 +5,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.account.R;
 import com.example.account.databinding.FragmentChartBinding;
-import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.PieData;
@@ -58,11 +50,10 @@ public class ChartFragment extends Fragment {
 
         ArrayList<PieEntry> yValues = new ArrayList<PieEntry>();
 
-        yValues.add(new PieEntry(34f,"식비"));
-        yValues.add(new PieEntry(23f,"건강"));
+        yValues.add(new PieEntry(50f,"식비"));
+        yValues.add(new PieEntry(50f,"건강"));
 
         Description description = new Description();
-//        description.setText("세계 국가"); //라벨
         description.setTextSize(15);
         pieChart.setDescription(description);
 

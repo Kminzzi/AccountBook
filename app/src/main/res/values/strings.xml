@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Account</string>
+    <string name="app_name">Mango Bank</string>
     <string name="title_home">가계부</string>
     <string name="title_dashboard">통계</string>
     <string name="title_notifications">더보기</string>
