@@ -85,7 +85,7 @@ public class AddFragment extends Fragment {
         String date = edtCard.getSelectedItem().toString();
 
         Spinner edtClass = (Spinner) layout.findViewById(R.id.edtClass);
-        String classfication = edtCard.getSelectedItem().toString();
+        String classfication = edtClass.getSelectedItem().toString();
 
 
 
@@ -109,8 +109,8 @@ public class AddFragment extends Fragment {
         edtCard.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            } //이 오버라이드 메소드에서 position은 몇번째 값이 클릭됬는지 알 수 있습니다.
-            //getItemAtPosition(position)를 통해서 해당 값을 받아올수있습니다.
+
+            }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) { }
