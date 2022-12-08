@@ -1,4 +1,4 @@
-# :Account_Mango Bank
+# :mango: Account_Mango Bank
 자바 언어를 이용한 가계부 앱
 
 # :computer: 프로젝트 소개
